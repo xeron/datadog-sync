@@ -16,9 +16,8 @@ class DatadogSync
 
     filtered_dashes = all_dashes.select { |dash| dash["title"] =~ regex }
     filtered_dashes_ids = filtered_dashes.collect { |dash| dash["id"] }
-    filtered_dashes_count = filtered_dashes_ids.count
 
-    puts "Saving #{filtered_dashes_count} dashboards with pattern /#{title_pattern}/ into '#{base_path}'"
+    puts "Saving #{filtered_dashes.count} dashboards with pattern /#{title_pattern}/ into '#{base_path}'"
 
     filtered_dashes_ids.each do |dash_id|
       dash_data = dd_client.get_dashboard(dash_id)[1]["dash"]
