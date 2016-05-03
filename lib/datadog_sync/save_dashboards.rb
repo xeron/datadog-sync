@@ -1,5 +1,5 @@
 class DatadogSync
-  def save_dashboards(title_pattern, dashboards_path)
+  def save_dashboards(dashboards_path, title_pattern="")
     regex = Regexp.new(title_pattern)
     base_path = File.expand_path(dashboards_path)
 
