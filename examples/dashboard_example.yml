@@ -1,0 +1,45 @@
+name: Dashboard name
+template_variables:
+  - name: environment
+    prefix: env
+    default: prod
+  - name: hostname
+    prefix: host
+    default: "*"
+# This filters will be applied to all metrics
+global_filters:
+  - $env
+  - $hostname
+  - "active:true"
+graphs:
+  - title: CPU Usage (example of stacked graph with 1 query)
+    viz: timeseries
+    requests:
+      - q:
+        - max:system.cpu.idle
+        - max:system.cpu.system
+        - max:system.cpu.iowait
+        - max:system.cpu.user
+        - max:system.cpu.stolen
+        - max:system.cpu.guest
+        type: area
+  - title: Load Average (example of lines graph with 3 queries)
+    viz: timeseries
+    type: line # This will be applied to all metrics if metric doesn't specify one
+    requests:
+      - q: max:system.load.1
+      - q: max:system.load.5
+      - q: max:system.load.15
+  - title: Memory Usage (example of graph with both stacked and line queries)
+    viz: timeseries
+    requests:
+      - q: max:system.mem.total
+        type: line
+        style:
+          palette: warm
+      - q:
+        - max:system.mem.free
+        - max:system.mem.buffered
+        - max:system.mem.cached
+        - max:system.mem.total - min:system.mem.usable
+        type: area
