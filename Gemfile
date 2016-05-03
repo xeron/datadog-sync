@@ -1,0 +1,2 @@
+gem 'dogapi'
+gem 'json'
