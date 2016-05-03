@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require 'datadog-sync'
+
+puts "Currently it doesn't do anything. See work in progress here https://github.com/xeron/datadog-sync."
+
+# ARGS parser will be here
+
+# ds = DatadogSync.new(DD_API_KEY, DD_APP_KEY)
+
+# ds.save_dashboards(PATH, PATTERN)

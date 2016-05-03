@@ -1,0 +1,25 @@
+PATH
+  remote: .
+  specs:
+    datadog-sync (0.0.1)
+      dogapi
+      json
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    dogapi (1.22.0)
+      multi_json
+    json (1.8.3)
+    multi_json (1.11.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  datadog-sync!
+  dogapi
+  json
+
+BUNDLED WITH
+   1.12.1

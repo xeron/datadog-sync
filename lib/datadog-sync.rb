@@ -1,0 +1,1 @@
+require 'datadog_sync'

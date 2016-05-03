@@ -1,3 +1,3 @@
 class DatadogSync
-  class AlreadyExists < RuntimeError; end
+  AlreadyExists = Class.new(RuntimeError)
 end
