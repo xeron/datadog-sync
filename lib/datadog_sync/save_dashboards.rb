@@ -4,20 +4,21 @@ class DatadogSync
     base_path = File.expand_path(dashboards_path)
 
     if File.file?(base_path)
-      raise AlreadyExists, "Provided gashboards path already exists and it's not a directory."
+      logger.error "Provided gashboards path already exists and it's not a directory."
+      raise AlreadyExists
     elsif !File.directory?(base_path)
-      puts "Creating directory for dashboards: '#{base_path}'"
+      logger.info "Creating directory for dashboards: '#{base_path}'"
       FileUtils.mkdir_p(base_path)
     end
 
     all_dashes = dd_client.get_dashboards[1]["dashes"]
 
-    puts "Found #{all_dashes.count} dashboards"
+    logger.info "Found #{all_dashes.count} dashboards"
 
     filtered_dashes = all_dashes.select { |dash| dash["title"] =~ regex }
     filtered_dashes_ids = filtered_dashes.collect { |dash| dash["id"] }
 
-    puts "Saving #{filtered_dashes.count} dashboards with pattern /#{title_pattern}/ into '#{base_path}'"
+    logger.info "Saving #{filtered_dashes.count} dashboards with pattern /#{title_pattern}/ into '#{base_path}'"
 
     filtered_dashes_ids.each do |dash_id|
       dash_data = dd_client.get_dashboard(dash_id)[1]["dash"]

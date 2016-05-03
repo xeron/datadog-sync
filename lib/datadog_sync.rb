@@ -1,6 +1,7 @@
 require 'dogapi'
 require 'json'
 require 'fileutils'
+require 'logger'
 
 require 'datadog_sync/version'
 require 'datadog_sync/errors'
