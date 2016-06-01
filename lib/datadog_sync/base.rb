@@ -1,6 +1,14 @@
 class DatadogSync
   attr_reader :dd_client, :logger
 
+  # Create DatadogSync instance.
+  #
+  # ==== Attributes
+  # * +api_key+ - Datadog API key (String)
+  # * +app_key+ - Datadog APP key (String)
+  # * +options+ - Options (Hash)
+  #   * +log_level+ - :debug < :info < :warn < :error < :fatal < :unknown
+  #   * +log_target+ - log file path, +STDOUT+ by default
   def initialize(api_key, app_key, options={})
     default_options = {
       log_level: :info,

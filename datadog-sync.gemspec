@@ -1,12 +1,11 @@
 $:.push File.expand_path("../lib", __FILE__)
-
 require "datadog_sync/version"
 
 Gem::Specification.new do |s|
   s.name = "datadog-sync"
   s.version = DatadogSync::VERSION
   s.platform = Gem::Platform::RUBY
-  s.extra_rdoc_files = ["README.md", "LICENSE" ]
+  s.extra_rdoc_files = %w(README.md LICENSE)
   s.summary = "Sync your DataDog."
   s.description = s.summary
   s.license = "MIT"
@@ -20,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency "json"
 
   s.bindir = "bin"
-  s.executables = %w( dd-sync )
+  s.executables = %w(dd-sync)
 
   s.require_path = "lib"
   s.files = %w(Rakefile LICENSE README.md) + Dir.glob("lib/**/*", File::FNM_DOTMATCH).reject { |f| File.directory?(f) }

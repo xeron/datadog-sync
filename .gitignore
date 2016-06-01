@@ -1,5 +1,6 @@
 *.gem
 pkg
+rdoc
 
 # Temp
 dd.rb

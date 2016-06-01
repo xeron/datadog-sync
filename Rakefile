@@ -1,12 +1,15 @@
 require 'rubygems'
 require 'rubygems/package_task'
 
+$:.push File.expand_path("../lib", __FILE__)
+require "datadog_sync/version"
+
 gemspec = eval(File.read("datadog-sync.gemspec"))
 Gem::PackageTask.new(gemspec).define
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
-  version = File.exist?("VERSION") ? File.read("VERSION") : ""
+  version = DatadogSync::VERSION
 
   rdoc.rdoc_dir = "rdoc"
   rdoc.title = "datadog-sync #{version}"
