@@ -4,7 +4,7 @@
 # * YAML format providing simpler way to describe dashboards without repeating a lot of things in chatty JSON. Example: https://github.com/xeron/datadog-sync/blob/master/examples/dashboard_example.yml
 # * Automation purposes (for example creating new dashboard or adding graphs when you deploy new version of application)
 class DatadogSync
-  attr_reader :dd_client, :logger # :nodoc:
+  attr_reader :dd_client, :logger
 
   # Create DatadogSync instance.
   #
