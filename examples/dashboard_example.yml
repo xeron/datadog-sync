@@ -1,4 +1,6 @@
-name: Dashboard name
+title: Dashboard name
+description: Dashboard description
+id: 12345
 template_variables:
   - name: environment
     prefix: env
@@ -13,7 +15,6 @@ global_filters:
   - "active:true"
 graphs:
   - title: CPU Usage (example of stacked graph with 1 query)
-    viz: timeseries
     requests:
       - q:
         - max:system.cpu.idle
@@ -24,14 +25,12 @@ graphs:
         - max:system.cpu.guest
         type: area
   - title: Load Average (example of lines graph with 3 queries)
-    viz: timeseries
     type: line # This will be applied to all metrics if metric doesn't specify one
     requests:
       - q: max:system.load.1
       - q: max:system.load.5
       - q: max:system.load.15
   - title: Memory Usage (example of graph with both stacked and line queries)
-    viz: timeseries
     requests:
       - q: max:system.mem.total
         type: line
